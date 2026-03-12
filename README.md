@@ -54,9 +54,12 @@
 GitHub Actions 工作流会自动执行以下步骤：
 
 1. **Clone nanobot 仓库**：从官方仓库拉取指定版本的代码
-2. **构建 Docker 镜像**：使用 nanobot 官方的 Dockerfile 构建镜像
-3. **推送到 GitHub Container Registry**：将镜像推送到 ghcr.io
-4. **触发 CapRover 部署**：使用 caprover/deploy-from-github action 自动部署
+2. **构建 nanobot 基础镜像**：使用官方 Dockerfile 构建基础镜像
+3. **构建最终镜像**：使用我们的 Dockerfile 包装基础镜像，覆盖启动命令为 `gateway`
+4. **推送到 GitHub Container Registry**：将最终镜像推送到 ghcr.io
+5. **触发 CapRover 部署**：使用 caprover/deploy-from-github action 自动部署
+
+**注意**：我们的 Dockerfile 会自动将启动命令从 `status` 改为 `gateway`，确保 Gateway 服务正常启动。
 
 ## 首次部署后的配置
 
