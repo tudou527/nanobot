@@ -24,7 +24,7 @@ jobs:
       - name: Checkout nanobot repository
         uses: actions/checkout@v4
         with:
-          repository: nanbingxyz/nanobot
+          repository: HKUDS/nanobot
           ref: ${{ github.event.inputs.nanobot_version }}
 
       - name: Set up Docker Buildx
